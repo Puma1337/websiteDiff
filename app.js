@@ -12,7 +12,7 @@ const sites = [
 
     
 async function runSites(site, firstRun){
-       
+        const siteName = util.getSiteName(site);
         util.log(site);
         if(firstRun){
             util.log("First Run");
@@ -20,26 +20,23 @@ async function runSites(site, firstRun){
             util.log("Filepath1: " + filePath1);
         }else{
             util.log("Next run");
-            var filePath1 = fs.readFileSync(site + "/original.txt");
-        }
-       
-
-        setTimeout(async function(){
+            
+            var filePath1 = fs.readFileSync(siteName + "/original.txt");
             var filePath2 = await getScreenshots.getScreenshot(site, false);
             util.log("Filepath2: " + filePath2);
-
+            filePath1 = siteName + "/" + filePath1;
             var data = await compareScreenshot.compare(filePath1, filePath2);
           
             var rawMisMatch = data.rawMisMatchPercentage;
             util.log("Raw MisMatch: " + rawMisMatch);
             if(rawMisMatch > 0){
-                await fs.writeFile("changes.png", data.getBuffer());
+                await fs.writeFile(siteName + "/changes.png", data.getBuffer());
             }
-        }, 10000);
+        }
 }
 
 sites.forEach(site => runSites(site, true));
 setInterval(() => {
     sites.forEach(site => runSites(site, false));
-}, 300000);
+}, 60000);
 

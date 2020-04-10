@@ -16,22 +16,21 @@ exports.getScreenshot = async function(site, original) {
 
     await page.goto(site);
 
-    const arr = site.split("/");
-    const siteName = arr[2];
+    
+    const siteName = util.getSiteName(site);
     
 
     if(!fs.existsSync(siteName)){
         fs.mkdirSync(siteName);
     }
    
-
+    await util.timeout(10000);
     var now = await moment().format('YYYY-MM-DD-hh-mm-ss-a');
     util.log(now);
     var fileName = now + ".png"
     var filePath = await siteName + "/" + fileName;
     util.log(siteName);
     util.log(filePath);
-    await util.timeout(10000);
     await page.screenshot({
         path: filePath,
         fullPage: true
