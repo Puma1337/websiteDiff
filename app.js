@@ -2,7 +2,6 @@ var getScreenshots = require("./getScreenshot");
 var compareScreenshot = require("./compareScreenshot");
 var fs = require("mz/fs");
 var util = require("./util");
-var merge = require("./merge");
 
 const sites = [
     "https://www.capitalone.com/updates/coronavirus/small-businesses/",
