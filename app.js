@@ -5,7 +5,9 @@ var util = require("./util");
 var config = require("./config");
 
 const sites = config.siteList();
+const timeDelay = config.timeDelay();
 console.log(sites);
+
    
 async function runSites(site, firstRun){
     const siteName = util.getSiteName(site);
@@ -34,5 +36,5 @@ async function runSites(site, firstRun){
 sites.forEach(site => runSites(site, true));
 setInterval(() => {
     sites.forEach(site => runSites(site, false));
-}, 60000);
+}, timeDelay);
 

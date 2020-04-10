@@ -7,3 +7,8 @@ exports.siteList = function siteList(){
 
     return sites;
 } 
+
+exports.timeDelay = function timeDelay(){
+    var ms = 60000;
+    return ms;
+}
