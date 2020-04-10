@@ -2,11 +2,10 @@ var getScreenshots = require("./getScreenshot");
 var compareScreenshot = require("./compareScreenshot");
 var fs = require("mz/fs");
 var util = require("./util");
+var siteList = require("./sitelist");
 
-const sites = [
-    "https://www.capitalone.com/updates/coronavirus/small-businesses/",
-    "https://www.chase.com"
-];
+const sites = siteList.siteList();
+console.log(sites);
    
 async function runSites(site, firstRun){
     const siteName = util.getSiteName(site);
