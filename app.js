@@ -2,9 +2,9 @@ var getScreenshots = require("./getScreenshot");
 var compareScreenshot = require("./compareScreenshot");
 var fs = require("mz/fs");
 var util = require("./util");
-var siteList = require("./sitelist");
+var config = require("./config");
 
-const sites = siteList.siteList();
+const sites = config.siteList();
 console.log(sites);
    
 async function runSites(site, firstRun){
