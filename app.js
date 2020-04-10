@@ -11,10 +11,18 @@ const sites = [
 
 
     
-async function runSites(site){
+async function runSites(site, firstRun){
+       
         util.log(site);
-        var filePath1 = await getScreenshots.getScreenshot(site, true);
-        util.log("Filepath1: " + filePath1);
+        if(firstRun){
+            util.log("First Run");
+            var filePath1 = await getScreenshots.getScreenshot(site, true);
+            util.log("Filepath1: " + filePath1);
+        }else{
+            util.log("Next run");
+            var filePath1 = fs.readFileSync(site + "/original.txt");
+        }
+       
 
         setTimeout(async function(){
             var filePath2 = await getScreenshots.getScreenshot(site, false);
@@ -27,10 +35,11 @@ async function runSites(site){
             if(rawMisMatch > 0){
                 await fs.writeFile("changes.png", data.getBuffer());
             }
-
         }, 10000);
-
-
 }
 
-sites.forEach(site => runSites(site));
+sites.forEach(site => runSites(site, true));
+setInterval(() => {
+    sites.forEach(site => runSites(site, false));
+}, 300000);
+
