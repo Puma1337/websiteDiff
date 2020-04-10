@@ -1,0 +1,18 @@
+{
+  "name": "imgdiff1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "mz": "^2.7.0",
+    "puppeteer": "^2.1.1",
+    "resemblejs": "^3.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
