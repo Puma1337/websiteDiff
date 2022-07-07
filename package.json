@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mz": "^2.7.0",
     "puppeteer": "^2.1.1",
     "resemblejs": "^3.2.4"
